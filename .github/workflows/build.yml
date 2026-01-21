@@ -15,6 +15,18 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      # Ставимо gradle 7.6 напряму (не apt 4.4.1)
+      - name: Download Gradle 7.6
+        run: |
+          curl -L -o gradle-7.6-bin.zip https://services.gradle.org/distributions/gradle-7.6-bin.zip
+          unzip -q gradle-7.6-bin.zip
+          echo "$PWD/gradle-7.6/bin" >> $GITHUB_PATH
+
+      # Генеруємо правильний wrapper (створить gradlew і gradle-wrapper.jar)
+      - name: Generate Gradle wrapper (7.6)
+        run: |
+          gradle wrapper --gradle-version 7.6
+
       - name: Make gradlew executable
         run: chmod +x gradlew
 
