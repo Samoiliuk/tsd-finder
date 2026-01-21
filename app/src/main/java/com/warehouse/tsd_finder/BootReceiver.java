@@ -6,7 +6,10 @@ import android.content.Intent;
 
 public class BootReceiver extends BroadcastReceiver {
     @Override public void onReceive(Context context, Intent intent) {
-        if (!"android.intent.action.BOOT_COMPLETED".equals(intent.getAction())) return;
+        String a = intent.getAction();
+        if (!"android.intent.action.BOOT_COMPLETED".equals(a) &&
+            !"android.intent.action.LOCKED_BOOT_COMPLETED".equals(a)) return;
+
         context.startService(new Intent(context, UdpListenService.class));
     }
 }
