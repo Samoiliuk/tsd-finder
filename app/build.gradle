@@ -1,0 +1,29 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace "com.warehouse.tsd_finder"
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.warehouse.tsd_finder"
+        minSdk 14   // Android 4.0
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    // Нічого додаткового не потрібно
+}
